@@ -17,9 +17,11 @@ console.log("Received the message inside gitPush->"+ JSON.stringify(req.body));
     cmd.get('bash ec2Create.sh',
         function(err, data, stderr){
             if (!err) {
-               console.log('Error in Running the Code->',data)
+               console.log('Error in Running the Code->',data);
+               res.json("success");
             } else {
-               console.log('error', err)
+               console.log('error', err);
+               res.json("error");
             }
 
         }
