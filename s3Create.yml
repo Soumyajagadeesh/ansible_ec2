@@ -1,0 +1,20 @@
+
+---
+### provision AWS EC2 instance
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  user: root
+  pre_tasks:
+    - include_vars: variables.yml
+  tasks:
+    - name: Provision {{ ec2_count }} instances with tag {{ ec2_tag_Role }}
+      local_action:
+        module: s3
+        name: mys3bucket
+        state: present
+
+  post_tasks:
+    - name: refresh hosts inventory list
+      meta: refresh_inventory
+

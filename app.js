@@ -17,7 +17,7 @@ console.log("Received the message inside gitPush->"+ JSON.stringify(req.body));
     cmd.get('bash ec2Create.sh',
         function(err, data, stderr){
             if (!err) {
-               console.log('Error in Running the Code->',data);
+               console.log('Success in Running the Code->',data);
                res.json("success");
             } else {
                console.log('error', err);
@@ -29,6 +29,26 @@ console.log("Received the message inside gitPush->"+ JSON.stringify(req.body));
 
 
 });
+
+
+app.get('/s3Create', function (req, res) {
+    console.log("Received the message inside S3 create->"+ JSON.stringify(req.body));
+    
+        cmd.get('bash s3Create.sh',
+            function(err, data, stderr){
+                if (!err) {
+                   console.log('Success in Running the Code->',data);
+                   res.json("success");
+                } else {
+                   console.log('error', err);
+                   res.json("error");
+                }
+    
+            }
+        );
+    
+    
+    });
 
 
 
