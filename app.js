@@ -50,6 +50,24 @@ app.get('/s3Create', function (req, res) {
     
     });
 
+    app.get('/terrec2Create', function (req, res) {
+        console.log("Received the message inside ec2 create->"+ JSON.stringify(req.body));
+        
+            cmd.get('bash terrec2Create.sh',
+                function(err, data, stderr){
+                    if (!err) {
+                       console.log('Success in Running the Code->',data);
+                       res.json("success");
+                    } else {
+                       console.log('error', err);
+                       res.json("error");
+                    }
+        
+                }
+            );
+        
+        
+        });
 
 
 
