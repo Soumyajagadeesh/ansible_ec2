@@ -1,0 +1,1 @@
+ansible-playbook -v ec2_prov_playbook.yml
